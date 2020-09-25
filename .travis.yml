@@ -5,3 +5,12 @@ services:
 script:
   - docker build -t mcarlson64/node .
   - docker images mcarlson64/node
+
+before_deploy:
+  - docker login -u mcarlson64 -p X43JRpcb$966
+
+deploy:
+  provider: script
+  script: docker push mcarlson64/node
+  on:
+    branch: master
